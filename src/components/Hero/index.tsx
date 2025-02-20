@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+
 const Hero = () => {
   return (
     <>
@@ -12,7 +13,10 @@ const Hero = () => {
             <div className="w-full px-4">
               <div className="mx-auto max-w-[800px] text-center">
                 <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  Hi! I'm <strong>Dimas Budiriansyah</strong>
+                  Hi! I'm{" "}
+                  <strong className="transition-all duration-300 hover:scale-110 hover:text-orange-500">
+                    Dimas Budiriansyah
+                  </strong>
                 </h1>
                 <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
                   Specialist on Property Appraisal, Web Development, Data
@@ -23,7 +27,7 @@ const Hero = () => {
                     href="https://nextjstemplates.com/templates/saas-starter-startup"
                     className="rounded-lg bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-green-700/80"
                   >
-                    🔥 About
+                    About
                   </Link>
                   <Link
                     href="https://github.com/NextJSTemplates/startup-nextjs"
