@@ -22,7 +22,7 @@ const Features = () => {
         >
           <SectionTitle
             title="Skills"
-            paragraph="There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form."
+            paragraph="Here are the skills I have"
             center
           />
         </motion.div>

@@ -11,7 +11,7 @@ import Testimonials from "@/components/Testimonials";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Dimas BR | Your Consultant",
+  title: "Dimas BR | I'm Your Solution",
   description:
     "Dimas BR is an appraisal consultant, IT Consultant who helps you to grow your business.",
   // other metadata
