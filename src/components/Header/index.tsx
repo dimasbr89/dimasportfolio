@@ -150,7 +150,6 @@ const Header = () => {
                                 openIndex === index ? "block" : "hidden"
                               }`}
                             >
-                              console.log("menuItem:", menuItem);
                               {menuItem.submenu?.map(
                                 (submenuItem, subIndex) => (
                                   <Link
