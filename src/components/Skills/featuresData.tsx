@@ -23,7 +23,7 @@ const featuresData: Feature[] = [
       "Berpengalaman dalam bidang penilaian properti (Property Appraisal) dan terdaftar di asosiasi penilai indonesia (MAPPI) serta teregister  di KEMENKEU (RMK/Register Menteri Keuangan).",
   },
   {
-    id: 1,
+    id: 2,
     icon: (
       <motion.div
         whileHover={{ rotate: 360 }}
@@ -42,7 +42,7 @@ const featuresData: Feature[] = [
       "Berpengalaman dalam bidang pengembangan website (Web Development) menggunakan teknologi terbaru dan modern, terutama dalam Front-end development.",
   },
   {
-    id: 1,
+    id: 3,
     icon: (
       <motion.div
         whileHover={{ rotate: 360 }}
@@ -61,7 +61,7 @@ const featuresData: Feature[] = [
       "Berpengalaman dalam bidang analisis data (Data Analysis), terutama dalam pengolahan data menggunakan bahasa pemrograman, Microsoft Excel, ataupun Google Workspace.",
   },
   {
-    id: 1,
+    id: 4,
     icon: (
       <motion.div
         whileHover={{ rotate: 360 }}
@@ -80,7 +80,7 @@ const featuresData: Feature[] = [
       "Berpengalaman dalam bidang IT Support, terutama dalam pengelolaan server, networking, dan perangkat keras (hardware) maupun perangkat lunak (software).",
   },
   {
-    id: 1,
+    id: 5,
     icon: (
       <motion.div
         whileHover={{ rotate: 360 }}
@@ -99,7 +99,7 @@ const featuresData: Feature[] = [
       "Berpengalaman dalam bidang Web Scraping, yaitu teknik ekstraksi data secara otomatis dari website. Data yang diambil bisa berupa teks, gambar, tabel atau format lainnya. Menggunakan bahasa pemrograman Python ataupun scraping software.",
   },
   {
-    id: 1,
+    id: 6,
     icon: (
       <motion.div
         whileHover={{ rotate: 360 }}

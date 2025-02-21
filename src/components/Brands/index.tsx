@@ -3,6 +3,7 @@ import Image from "next/image";
 import brandsData from "./brandsData";
 
 const Brands = () => {
+  // console.log("brandsData:", brandsData);
   return (
     <section className="pt-16">
       <div className="container">

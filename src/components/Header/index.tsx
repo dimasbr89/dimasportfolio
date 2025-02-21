@@ -34,7 +34,7 @@ const Header = () => {
   };
 
   const usePathName = usePathname();
-
+  // console.log("menuData:", menuData);
   return (
     <>
       <motion.header
@@ -150,6 +150,7 @@ const Header = () => {
                                 openIndex === index ? "block" : "hidden"
                               }`}
                             >
+                              console.log("menuItem:", menuItem);
                               {menuItem.submenu?.map(
                                 (submenuItem, subIndex) => (
                                   <Link

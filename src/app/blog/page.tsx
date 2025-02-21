@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 const Blog = () => {
+  // console.log("blogData:", blogData);
   return (
     <>
       <Breadcrumb
