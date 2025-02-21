@@ -19,16 +19,35 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, ease: "easeOut" }}
               >
-                <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  Hi! I'm{" "}
-                  <strong className="transition-all duration-300 hover:scale-150 hover:text-orange-500">
-                    Dimas Budiriansyah
+                <h1
+                  className="mb-5 text-3xl font-bold leading-tight text-blue-400 dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight"
+                  style={{
+                    textShadow: "1px 1px 2px rgba(0,0,0,0.7)",
+                    filter: "drop-shadow(1px 1px 2px rgba(255,255,255,0.7))",
+                  }}
+                >
+                  Welcome to{" "}
+                  <strong
+                    className="text-orange-500 transition-all duration-300  hover:scale-150 hover:text-blue-500"
+                    style={{
+                      textShadow: "1px 1px 2px rgba(0,0,0,0.7)",
+                      filter: "drop-shadow(1px 1px 2px rgba(255,255,255,0.7))",
+                    }}
+                  >
+                    Dimas BR
                   </strong>
                 </h1>
-                <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
+                <p
+                  className="mb-12 text-base !leading-relaxed text-black dark:text-white sm:text-lg md:text-xl"
+                  style={{
+                    textShadow: "1px 1px 2px rgba(0,0,0,0.7)",
+                    filter: "drop-shadow(1px 1px 2px rgba(255,255,255,0.7))",
+                  }}
+                >
                   Specialist on Property Appraisal, Web Development, Data
                   Analysis, IT Support, Web Scraping, Logo Design.
                 </p>
+
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -41,7 +60,8 @@ const Hero = () => {
                     >
                       About
                     </Link>
-                  </motion.div>
+                  </motion.div>{" "}
+                  <br />
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
