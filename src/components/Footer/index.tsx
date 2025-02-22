@@ -1,6 +1,35 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { Typewriter } from "react-simple-typewriter";
+
+const TypingText = () => {
+  return (
+    <motion.p
+      className="mb-9 text-base leading-relaxed text-body-color dark:text-orange-400"
+      style={{ fontFamily: "Consolas, monospace" }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <Typewriter
+        words={[
+          "Trusted, Integrity, and Professional.",
+          "Solusi untuk menyelesaikan project anda",
+          "Whatsapp : 0857-8046-3901",
+          "Email : dimasbudiriansyah@gmail.com",
+        ]}
+        loop={Infinity}
+        cursor
+        cursorStyle="|"
+        typeSpeed={30}
+        deleteSpeed={10}
+        delaySpeed={4000}
+      />
+    </motion.p>
+  );
+};
 
 const Footer = () => {
   return (
@@ -10,26 +39,27 @@ const Footer = () => {
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-5/12">
               <div className="mb-12 max-w-[360px] lg:mb-16">
-                <Link href="/" className="mb-8 inline-block">
+                <Link href="/" className="group mb-8 inline-block">
                   <Image
                     src="/images/logo/logo-2.svg"
                     alt="logo"
-                    className="w-full dark:hidden"
+                    className="w-full transition-transform duration-500 group-hover:-rotate-180 dark:hidden"
                     width={140}
                     height={30}
                   />
                   <Image
-                    src="/images/logo/logo.svg"
+                    src="/images/logo/dimaslogo.png"
                     alt="logo"
-                    className="hidden w-full dark:block"
+                    className="hidden w-full transition-transform duration-500 group-hover:rotate-180 dark:block"
                     width={140}
                     height={30}
                   />
                 </Link>
-                <p className="mb-9 text-base leading-relaxed text-body-color dark:text-body-color-dark">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Integer lobortis.
+                <p className="mb-2 text-base leading-relaxed text-body-color dark:text-body-color-dark">
+                  <strong>Dimas Budiriansyah</strong> is Your Solution.
                 </p>
+                <TypingText />
+
                 <div className="flex items-center">
                   <a
                     href="/"
@@ -215,7 +245,9 @@ const Footer = () => {
           <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D2D8E183] to-transparent dark:via-[#959CB183]"></div>
           <div className="py-8">
             <p className="text-center text-base text-body-color dark:text-gray-400">
-              Developed by Dimas BR © 2024-{new Date().getFullYear()}
+              Copyright © 2024-{new Date().getFullYear()} Dimas BR
+              <br />
+              All Rights Reserved.
             </p>
           </div>
         </div>

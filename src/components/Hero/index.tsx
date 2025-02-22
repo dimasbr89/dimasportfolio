@@ -55,7 +55,7 @@ const Hero = () => {
                     transition={{ duration: 1, delay: 0.2 }}
                   >
                     <Link
-                      href="https://nextjstemplates.com/templates/saas-starter-startup"
+                      href="/about"
                       className="rounded-lg bg-primary px-8 py-4 text-base font-semibold text-white duration-300 ease-in-out hover:bg-green-700/80"
                     >
                       About
@@ -68,7 +68,7 @@ const Hero = () => {
                     transition={{ duration: 1, delay: 0.4 }}
                   >
                     <Link
-                      href="https://github.com/NextJSTemplates/startup-nextjs"
+                      href="/contact"
                       className="rounded-lg bg-orange-400 px-8 py-4 
                      text-base font-semibold text-white duration-300 ease-in-out hover:bg-green-700/80"
                     >
