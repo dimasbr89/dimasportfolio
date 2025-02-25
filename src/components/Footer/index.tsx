@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Typewriter } from "react-simple-typewriter";
+import React, { useState, useEffect } from "react";
 
 const TypingText = () => {
   return (
@@ -32,6 +33,64 @@ const TypingText = () => {
 };
 
 const Footer = () => {
+  const [displayedText, setDisplayedText] = useState<string[]>([]);
+  const [index, setIndex] = useState(0);
+  const [userIP, setUserIP] = useState<string | null>(null);
+  const [commands, setCommands] = useState<string[]>([
+    "DIMAS-BR CLI v4.0",
+    "",
+    "> Connection successful!",
+    "> Displaying available Services:",
+    "> - Property Appraisal",
+    "> - Web Development",
+    "> - Logo Design",
+    "> - Data Analysis",
+    "> - Video Editing",
+    "> - IT Support",
+  ]);
+
+  useEffect(() => {
+    const fetchIP = async () => {
+      try {
+        const response = await fetch("https://api64.ipify.org?format=json");
+        const data = await response.json();
+        setUserIP(data.ip);
+      } catch (error) {
+        setUserIP("Unknown IP");
+      }
+    };
+
+    // Jalankan fetch IP hanya sekali saat pertama kali render
+    if (!userIP) {
+      fetchIP();
+    }
+
+    // Perbarui command jika userIP sudah didapat
+    if (userIP) {
+      setCommands((prev) => {
+        const newCommands = [...prev];
+        newCommands[1] = `> Your IP: ${userIP}`;
+        return newCommands;
+      });
+    }
+
+    if (index < commands.length) {
+      const timeout = setTimeout(() => {
+        setDisplayedText((prev) => [...prev, commands[index]]);
+        setIndex(index + 1);
+      }, 1000); // Delay antar teks
+
+      return () => clearTimeout(timeout);
+    } else {
+      // Setelah selesai, tunggu 4 detik lalu reset untuk loop
+      const resetTimeout = setTimeout(() => {
+        setDisplayedText([]); // Kosongkan terminal
+        setIndex(0); // Ulang dari awal
+      }, 8000);
+
+      return () => clearTimeout(resetTimeout);
+    }
+  }, [index, userIP]); // Pastikan efek berjalan ulang jika IP berubah
   return (
     <>
       <footer className="relative z-10 bg-white pt-16 dark:bg-gray-dark md:pt-20 lg:pt-24">
@@ -142,7 +201,7 @@ const Footer = () => {
             <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
               <div className="mb-12 lg:mb-16">
                 <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
-                  Useful Links
+                  Link Terkait
                 </h2>
                 <ul>
                   <li>
@@ -153,14 +212,14 @@ const Footer = () => {
                       Blog
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link
                       href="/"
                       className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
                     >
                       Pricing
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link
                       href="/about"
@@ -184,7 +243,7 @@ const Footer = () => {
                       href="/"
                       className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
                     >
-                      TOS
+                      Terms and Conditions
                     </Link>
                   </li>
                   <li>
@@ -195,53 +254,26 @@ const Footer = () => {
                       Privacy Policy
                     </Link>
                   </li>
-                  <li>
-                    <Link
-                      href="/"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                    >
-                      Refund Policy
-                    </Link>
-                  </li>
                 </ul>
               </div>
             </div>
 
-            <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-3/12">
+            {/* Terminal CLI Section dengan efek mengetik satu per satu */}
+            <div className="mt-0 w-full px-4 md:w-1/2 lg:w-4/12 xl:w-3/12">
               <div className="mb-12 lg:mb-16">
-                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
-                  Support & Help
-                </h2>
-                <ul>
-                  <li>
-                    <Link
-                      href="/contact"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+                <div className="mx-auto mt-0 h-48 w-full max-w-xl overflow-auto rounded-lg bg-black p-4 font-mono text-xs text-green-400">
+                  {displayedText.map((line, i) => (
+                    <p
+                      key={i}
+                      className={i === 0 ? "text-center font-bold" : ""}
                     >
-                      Open Support Ticket
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                    >
-                      Terms of Use
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/about"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                    >
-                      About
-                    </Link>
-                  </li>
-                </ul>
+                      {line}
+                    </p>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-
           <div className="h-px w-full bg-gradient-to-r from-transparent via-[#D2D8E183] to-transparent dark:via-[#959CB183]"></div>
           <div className="py-8">
             <p className="text-center text-base text-body-color dark:text-gray-400">

@@ -1,8 +1,85 @@
 "use client";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Typewriter } from "react-simple-typewriter";
 
+// Komponen untuk Efek Hover pada Gambar
+const HoverEffectImage = () => {
+  const [xOffset, setXOffset] = useState(0);
+  const [yOffset, setYOffset] = useState(0);
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      const { clientX, clientY } = event;
+      const { innerWidth, innerHeight } = window;
+
+      // Tentukan pergerakan berdasarkan posisi kursor
+      const moveX = clientX < innerWidth / 2 ? 100 : -100; // Gerak horizontal (kanan/kiri)
+      const moveY = clientY < innerHeight / 2 ? 100 : -100; // Gerak vertikal (atas/bawah)
+
+      setXOffset(moveX);
+      setYOffset(moveY);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  return (
+    <motion.div
+      className="absolute right-0 top-0 z-[-1] h-[556px] w-[450px] opacity-30 lg:opacity-100"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      whileHover={{
+        x: xOffset,
+        y: yOffset,
+        transition: { duration: 0.5, ease: "easeOut" },
+      }}
+    >
+      <Image
+        src="/images/dimasnih.png"
+        alt="Your Photo"
+        width={450}
+        height={556}
+        className="object-cover"
+      />
+    </motion.div>
+  );
+};
+
+// Komponen untuk Teks dengan Efek Ketik
+const TypingText = () => {
+  return (
+    <motion.p
+      className="mb-9 text-base font-semibold leading-relaxed text-body-color dark:text-white"
+      style={{
+        fontFamily: '"Poppins", sans-serif',
+        textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
+      }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <Typewriter
+        words={[
+          "Specialist on Property Appraisal, Web Development, Data Analysis, IT Support, Web Scraping, and Logo Design.",
+        ]}
+        loop={1}
+        cursor
+        cursorStyle=""
+        typeSpeed={30}
+        deleteSpeed={20}
+        delaySpeed={4000}
+      />
+    </motion.p>
+  );
+};
+
+// Komponen Utama Hero Section
 const Hero = () => {
   return (
     <>
@@ -37,16 +114,8 @@ const Hero = () => {
                     Dimas BR
                   </strong>
                 </h1>
-                <p
-                  className="mb-12 text-base !leading-relaxed text-black dark:text-white sm:text-lg md:text-xl"
-                  style={{
-                    textShadow: "1px 1px 2px rgba(0,0,0,0.7)",
-                    filter: "drop-shadow(1px 1px 2px rgba(255,255,255,0.7))",
-                  }}
-                >
-                  Specialist on Property Appraisal, Web Development, Data
-                  Analysis, IT Support, Web Scraping, Logo Design.
-                </p>
+
+                <TypingText />
 
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <motion.div
@@ -60,7 +129,7 @@ const Hero = () => {
                     >
                       About
                     </Link>
-                  </motion.div>{" "}
+                  </motion.div>
                   <br />
                   <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
@@ -81,21 +150,8 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Efek Fade-in untuk Gambar */}
-        <motion.div
-          className="absolute right-0 top-0 z-[-1] h-[556px] w-[450px] opacity-30 lg:opacity-100"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
-        >
-          <Image
-            src="/images/dimasnih.png"
-            alt="Your Photo"
-            width={450}
-            height={556}
-            className="object-cover"
-          />
-        </motion.div>
+        {/* Panggil HoverEffectImage di sini */}
+        <HoverEffectImage />
       </section>
     </>
   );
